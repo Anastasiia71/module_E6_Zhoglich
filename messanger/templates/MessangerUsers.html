@@ -1,0 +1,31 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+MessangerUsers
+{% endblock title %}
+
+{% block content %}
+    <h1>Пользователи</h1>
+    <hr>
+
+    {% if MessangerUsers %}
+        <table>
+           <tr>
+               <th><h3>Имя пользователя</h3></th>
+               <th><h3>Изображение</h3></th>
+
+           </tr>
+            {% for MessangerUser in MessangerUsers %}
+            <tr>
+                <td>
+                    <a href="{% url 'MessangerUser_detail' MessangerUser.id %}">{{ MessangerUser.nickname }}</a>
+                    <a href="{% url 'Message_create' %}">Написать сообщение</a>
+                </td>
+                <td>{{ MessangerUser.image }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Пока пользователей нет</h2>
+    {% endif %}
+{% endblock content %}

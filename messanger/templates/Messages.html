@@ -1,0 +1,31 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Messages
+{% endblock title %}
+
+{% block content %}
+    <h1>Сообщения</h1>
+    <hr>
+    <a href="{% url 'Message_create' %}">Написать сообщение</a>
+
+    {% if Messages %}
+        <table>
+           <tr>
+               <th><h3>От кого</h3></th>
+               <th><h3>Сообщение</h3></th>
+
+           </tr>
+            {% for Message in Messages %}
+            <tr>
+                <td>
+                    <a href="{% url 'Message_detail' Message.id %}">{{ Message.messageAuthor }}</a>
+                </td>
+                <td>{{ Message.text }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Пока сообщений нет</h2>
+    {% endif %}
+{% endblock content %}

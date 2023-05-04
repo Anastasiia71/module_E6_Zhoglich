@@ -1,0 +1,33 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Chats
+{% endblock title %}
+
+{% block content %}
+    <h1>Чаты</h1>
+    <hr>
+    <a href="{% url 'Chat_create' %}">Создать чат</a>
+
+    {% if Chats %}
+        <table>
+           <tr>
+               <th><h3>Название</h3></th>
+               <th><h3>Участники</h3></th>
+               <th><h3>Сообщения</h3></th>
+
+           </tr>
+            {% for Chat in Chats %}
+            <tr>
+                <td>
+                    <a href="{% url 'Chat_detail' Chat.id %}">{{ Chat.title }}</a>
+                </td>
+                <td>{{ Chat.title }}</td>
+                <td>{{ Chat.messages|truncatechars:15 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Пока никаких чатов нет</h2>
+    {% endif %}
+{% endblock content %}

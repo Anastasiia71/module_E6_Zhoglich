@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+Message
+{% endblock title %}
+
+{% block content %}
+<h1>{{ Message.messageAuthor }}</h1>
+<h4>
+    <a href="{% url 'Message_create' %}">Написать сообщение</a>
+</h4>
+<h2>{{ Message.text }}</h2>
+{% endblock content %}

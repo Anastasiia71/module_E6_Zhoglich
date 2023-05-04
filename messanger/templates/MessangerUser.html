@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title %}
+MessangerUser
+{% endblock title %}
+
+{% block content %}
+<h1>{{ MessangerUser.nickname }}</h1>
+<h4>
+    <a href="{% url 'Message_create' %}">Написать сообщение</a>
+</h4>
+<h2>{{ MessangerUser.email }}</h2>
+<h2>{{ MessangerUser.image }}</h2>
+
+{% endblock content %}
